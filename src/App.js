@@ -6,11 +6,13 @@ const App = () => {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchWeather = async () => {
     if (!city.trim()) return;
     setError("");
     setWeather(null);
+    setIsLoading(true);
 
     try {
       const response = await fetch(
@@ -24,6 +26,8 @@ const App = () => {
       }
     } catch {
       setError("Error fetching data");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -32,7 +36,12 @@ const App = () => {
       <h1 className="text-3xl sm:text-4xl font-bold text-blue-800 mb-6">
         🌦 Weather App
       </h1>
-      <WeatherInput city={city} setCity={setCity} fetchWeather={fetchWeather} />
+      <WeatherInput
+        city={city}
+        setCity={setCity}
+        fetchWeather={fetchWeather}
+        isLoading={isLoading}
+      />
       {error && <p className="text-red-600 mb-4">{error}</p>}
       {weather && <WeatherDisplay weather={weather} />}
     </div>

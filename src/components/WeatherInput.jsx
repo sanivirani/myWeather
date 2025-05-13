@@ -1,6 +1,6 @@
 import React from "react";
 
-const WeatherInput = ({ city, setCity, fetchWeather }) => (
+const WeatherInput = ({ city, setCity, fetchWeather, isLoading }) => (
   <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
     <input
       type="text"
@@ -11,9 +11,12 @@ const WeatherInput = ({ city, setCity, fetchWeather }) => (
     />
     <button
       onClick={fetchWeather}
-      className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-all"
+      disabled={isLoading}
+      className={`px-6 py-2 rounded-lg text-white transition-all ${
+        isLoading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
+      }`}
     >
-      Get Weather
+      {isLoading ? "Loading..." : "Get Weather"}
     </button>
   </div>
 );
