@@ -1,4 +1,4 @@
-# my Weather App
+# My Weather App
 
 A simple weather application built with React and Tailwind CSS.
 
