@@ -1,5 +1,3 @@
-import React from "react";
-
 const WeatherInput = ({ city, setCity, fetchWeather, isLoading }) => (
   <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
     <input

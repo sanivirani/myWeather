@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import WeatherInput from "./components/WeatherInput";
 import WeatherDisplay from "./components/WeatherDisplay";
+import "./index.css";
 
 const App = () => {
   const [city, setCity] = useState("");
